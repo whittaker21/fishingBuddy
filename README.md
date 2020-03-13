@@ -1,2 +1,2 @@
 # fishingBuddy
-Database for logging species of fish caught
+Log the species, length, weight, location, and time of day.
