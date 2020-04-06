@@ -3,13 +3,10 @@
 // Fishing buddy Application
 
 import javafx.application.Application;
-import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.paint.Color;
+import javafx.scene.control.Button;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import javafx.scene.control.Label;
-
-
 
 public class fishingBuddy extends Application {
 
@@ -17,21 +14,29 @@ public class fishingBuddy extends Application {
         launch(args);
     }
 
+    //global variables
+    Button buttonSubmit;
+
+
     @Override
     public void start(Stage primaryStage) {
 
-        //setting up the group
-        Group group = new Group();
+        //creating the scene and grid pane for scene1
+        GridPane pane = new GridPane();
+        Scene scene1 = new Scene( pane,400, 400);
 
-        //creating the scene and filling it
-        Scene scene = new Scene( group,400, 400);
-        scene.setFill(Color.rgb(0,155,155));
+        //creating a Submit button
+        buttonSubmit = new Button();
+        buttonSubmit.setText("Submit");
+        pane.getChildren().add(buttonSubmit);
+        buttonSubmit.setOnAction( e -> ConfirmSubmit.confirmation("Submit", "Do you want to Submit? "));
 
-        //placing the scene in the stage
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Fishing Buddy");
 
         //displaying the window
+        //placing the scene in the stage
+        primaryStage.setScene(scene1);
+        primaryStage.setTitle("Fishing Buddy");
         primaryStage.show();
     }
+
 }
