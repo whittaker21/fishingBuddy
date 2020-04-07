@@ -29,7 +29,10 @@ public class fishingBuddy extends Application {
         buttonSubmit = new Button();
         buttonSubmit.setText("Submit");
         pane.getChildren().add(buttonSubmit);
-        buttonSubmit.setOnAction( e -> ConfirmSubmit.confirmation("Submit", "Do you want to Submit? "));
+        buttonSubmit.setOnAction( e -> {
+            boolean result = ConfirmSubmit.confirmation("Submit", "Do you want to Submit? ");
+            System.out.println(result);
+        });
 
 
         //displaying the window

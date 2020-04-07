@@ -3,6 +3,8 @@
 // Confirmation popup window
 
 
+import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -20,7 +22,6 @@ public class ConfirmSubmit {
         Stage primaryWindow = new Stage();
         primaryWindow.initModality(Modality.APPLICATION_MODAL);
         primaryWindow.setTitle(title);
-        primaryWindow.setMinWidth(200);
 
         //labels and buttons
         Label label = new Label();
@@ -28,10 +29,30 @@ public class ConfirmSubmit {
         Button buttonYes = new Button("Yes");
         Button buttonNo = new Button("No");
 
+        //event handlers
+        buttonYes.setOnAction(e ->{
+          result = true;
+          primaryWindow.close();
+        });
+
+        buttonNo.setOnAction( e -> {
+            result = false;
+            primaryWindow.close();
+        });
+
         //setting up layout
         GridPane layout = new GridPane();
-        layout.add(buttonYes, 0, 0);
-        layout.add(buttonNo, 1, 0);
+        layout.setMinSize(300, 100);
+        layout.setPadding(new Insets(10, 10, 10 , 10));
+        layout.setVgap(10);
+        layout.setHgap(10);
+
+        //adding items to layout
+        layout.add(label, 0, 0);
+        layout.add(buttonYes, 0, 1);
+        GridPane.setHalignment(buttonYes, HPos.RIGHT);
+        layout.add(buttonNo, 1, 1);
+
 
 
         //setting up scene and connecting it to stage
@@ -40,7 +61,6 @@ public class ConfirmSubmit {
         primaryWindow.showAndWait();
 
         return result;
-
     }
 
 }
