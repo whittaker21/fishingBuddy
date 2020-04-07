@@ -21,7 +21,6 @@ public class ConfirmSubmit {
     public static boolean confirmation(String title, String message){
         Stage primaryWindow = new Stage();
         primaryWindow.initModality(Modality.APPLICATION_MODAL);
-        primaryWindow.setTitle(title);
 
         //labels and buttons
         Label label = new Label();
@@ -57,6 +56,7 @@ public class ConfirmSubmit {
 
         //setting up scene and connecting it to stage
         Scene scene = new Scene(layout);
+        primaryWindow.setTitle(title);
         primaryWindow.setScene(scene);
         primaryWindow.showAndWait();
 
