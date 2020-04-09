@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -24,9 +25,12 @@ public class fishingBuddy extends Application {
     }
 
     //global variables
-     Button buttonSubmit;
-     Button buttonClear;
-    ImageView imageView;
+    private static Button buttonLoadImage;
+    private static Button buttonSubmit;
+    private static Button buttonClear;
+    private static ImageView imageView;
+    private static File selectedFile;
+
 
 
     @Override
@@ -41,10 +45,11 @@ public class fishingBuddy extends Application {
 
         buttonSubmit = new Button("Submit");
         buttonClear = new Button("Clear");
+        buttonLoadImage = new Button("Load Image");
 
         //imageviewer
-        Image imageFish = new Image("paddlefish.jpg");
-        imageView = new ImageView(imageFish);
+        Image noImage = new Image("noImg.jpg");
+        imageView = new ImageView(noImage);
         imageView.setFitWidth(400);
         imageView.setFitHeight(225);
         imageView.setPreserveRatio(true);
@@ -81,6 +86,15 @@ public class fishingBuddy extends Application {
             time.clear();
         });
 
+        //Load Image button
+        buttonLoadImage.setOnAction(e ->{
+            FileChooser fileChooser = new FileChooser();
+            selectedFile = fileChooser.showOpenDialog(primaryStage);
+            Image newImage = new Image(selectedFile.toURI().toString());
+            imageView.setImage(newImage);
+
+        });
+
         //creating the scene and grid pane for scene1
         GridPane pane = new GridPane();
 
@@ -93,6 +107,7 @@ public class fishingBuddy extends Application {
         pane.add(buttonSubmit,0,6);
         pane.add(buttonClear,1,6);
         pane.add(imageView, 2,0);
+        pane.add(buttonLoadImage, 2,1);
 
 
         //pane layout
@@ -101,11 +116,12 @@ public class fishingBuddy extends Application {
         pane.setPadding(new Insets(10,10,10,10));
         GridPane.setHalignment(buttonClear, HPos.LEFT);
         GridPane.setHalignment(buttonSubmit, HPos.RIGHT);
+        GridPane.setHalignment(buttonLoadImage, HPos.CENTER);
 
 
         //displaying the window
         //placing the scene in the stage
-        Scene scene1 = new Scene( pane,560, 430);
+        Scene scene1 = new Scene( pane,600, 430);
         primaryStage.setScene(scene1);
         primaryStage.setTitle("Fishing Buddy");
         primaryStage.show();
