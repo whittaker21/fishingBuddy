@@ -43,8 +43,14 @@ public class fishingBuddy extends Application {
         buttonClear = new Button("Clear");
 
         //imageviewer
-        Image imageFish = new Image("bass1.jpg");
+        Image imageFish = new Image("paddlefish.jpg");
         imageView = new ImageView(imageFish);
+        imageView.setFitWidth(400);
+        imageView.setFitHeight(225);
+        imageView.setPreserveRatio(true);
+        imageView.setSmooth(true);
+        imageView.setCache(true);
+
 
 
         //Text Fields and binding
@@ -99,7 +105,7 @@ public class fishingBuddy extends Application {
 
         //displaying the window
         //placing the scene in the stage
-        Scene scene1 = new Scene( pane,560, 370);
+        Scene scene1 = new Scene( pane,560, 430);
         primaryStage.setScene(scene1);
         primaryStage.setTitle("Fishing Buddy");
         primaryStage.show();
