@@ -1,5 +1,5 @@
 // Author: Preston Whittaker
-// Date last Modified: 4/7/2020
+// Date last Modified: 4/8/2020
 // Fishing buddy Application
 
 import javafx.application.Application;
@@ -10,8 +10,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+
+import java.io.File;
 
 public class fishingBuddy extends Application {
 
@@ -20,8 +24,9 @@ public class fishingBuddy extends Application {
     }
 
     //global variables
-    Button buttonSubmit;
-    Button buttonClear;
+     Button buttonSubmit;
+     Button buttonClear;
+    ImageView imageView;
 
 
     @Override
@@ -33,8 +38,14 @@ public class fishingBuddy extends Application {
         Label labelWeight= new Label("Weight(lb/oz): ");
         Label labelLocation = new Label("Location: ");
         Label labelTime = new Label("Time: ");
+
         buttonSubmit = new Button("Submit");
         buttonClear = new Button("Clear");
+
+        //imageviewer
+        Image imageFish = new Image("bass1.jpg");
+        imageView = new ImageView(imageFish);
+
 
         //Text Fields and binding
         TextField species = new TextField();
@@ -49,11 +60,13 @@ public class fishingBuddy extends Application {
         labelTime.setLabelFor(time);
 
         //action handling
+        //submit button
         buttonSubmit.setOnAction( e -> {
             boolean result = ConfirmSubmit.confirmation("Submit", "Do you want to Submit? ");
             System.out.println(result);
         });
 
+        //clear button
         buttonClear.setOnAction(e -> {
             species.clear();
             length.clear();
@@ -73,6 +86,7 @@ public class fishingBuddy extends Application {
         pane.addRow(5,labelTime,time);
         pane.add(buttonSubmit,0,6);
         pane.add(buttonClear,1,6);
+        pane.add(imageView, 2,0);
 
 
         //pane layout
@@ -85,7 +99,7 @@ public class fishingBuddy extends Application {
 
         //displaying the window
         //placing the scene in the stage
-        Scene scene1 = new Scene( pane,260, 250);
+        Scene scene1 = new Scene( pane,560, 370);
         primaryStage.setScene(scene1);
         primaryStage.setTitle("Fishing Buddy");
         primaryStage.show();
