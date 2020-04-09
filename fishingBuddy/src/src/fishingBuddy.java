@@ -3,7 +3,9 @@
 // Fishing buddy Application
 
 import javafx.application.Application;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -19,6 +21,7 @@ public class fishingBuddy extends Application {
 
     //global variables
     Button buttonSubmit;
+    Button buttonClear;
 
 
     @Override
@@ -26,11 +29,12 @@ public class fishingBuddy extends Application {
 
         //creating a Submit button and Labels
         Label labelSpecies = new Label("Fish Species: ");
-        Label labelLength = new Label("Length: ");
-        Label labelWeight= new Label("Weight: ");
+        Label labelLength = new Label("Length (in): ");
+        Label labelWeight= new Label("Weight(lb/oz): ");
         Label labelLocation = new Label("Location: ");
         Label labelTime = new Label("Time: ");
         buttonSubmit = new Button("Submit");
+        buttonClear = new Button("Clear");
 
         //Text Fields and binding
         TextField species = new TextField();
@@ -50,25 +54,38 @@ public class fishingBuddy extends Application {
             System.out.println(result);
         });
 
+        buttonClear.setOnAction(e -> {
+            species.clear();
+            length.clear();
+            weight.clear();
+            location.clear();
+            time.clear();
+        });
+
         //creating the scene and grid pane for scene1
         GridPane pane = new GridPane();
 
         //placing items into pane
-        pane.addRow(0,labelSpecies, species);
-        pane.addRow(1,labelLength, length);
-        pane.addRow(2,labelWeight,weight);
-        pane.addRow(3,labelLocation,location);
-        pane.addRow(4,labelTime,time);
-        pane.add(buttonSubmit,1,5);
+        pane.addRow(1,labelSpecies, species);
+        pane.addRow(2,labelLength, length);
+        pane.addRow(3,labelWeight,weight);
+        pane.addRow(4,labelLocation,location);
+        pane.addRow(5,labelTime,time);
+        pane.add(buttonSubmit,0,6);
+        pane.add(buttonClear,1,6);
+
 
         //pane layout
         pane.setVgap(5);
         pane.setHgap(5);
         pane.setPadding(new Insets(10,10,10,10));
+        GridPane.setHalignment(buttonClear, HPos.LEFT);
+        GridPane.setHalignment(buttonSubmit, HPos.RIGHT);
+
 
         //displaying the window
         //placing the scene in the stage
-        Scene scene1 = new Scene( pane,250, 250);
+        Scene scene1 = new Scene( pane,260, 250);
         primaryStage.setScene(scene1);
         primaryStage.setTitle("Fishing Buddy");
         primaryStage.show();
