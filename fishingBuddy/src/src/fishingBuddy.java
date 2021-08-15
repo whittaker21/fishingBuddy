@@ -1,5 +1,5 @@
 // Author: Preston Whittaker
-// Date last Modified: 4/8/2020
+// Date last Modified: 8/14/2021
 // Fishing buddy Application
 
 import javafx.application.Application;
@@ -29,6 +29,7 @@ public class fishingBuddy extends Application {
     private static Button buttonSubmit;
     private static Button buttonClear;
     private static ImageView imageView;
+    private static ImageView imageIcon;
     private static File selectedFile;
 
 
@@ -48,13 +49,21 @@ public class fishingBuddy extends Application {
         buttonLoadImage = new Button("Load Image");
 
         //imageviewer
-        Image noImage = new Image("noImg.jpg");
+        Image noImage = new Image("Image/noImg.jpg");
         imageView = new ImageView(noImage);
         imageView.setFitWidth(400);
         imageView.setFitHeight(225);
         imageView.setPreserveRatio(true);
         imageView.setSmooth(true);
         imageView.setCache(true);
+
+        Image logo = new Image("Image/FishingBuddy3.0.png");
+        imageIcon = new ImageView(logo);
+        imageIcon.setFitHeight(400);
+        imageIcon.setFitWidth(225);
+        imageIcon.setPreserveRatio(true);
+        imageIcon.setSmooth(true);
+        imageIcon.setCache(true);
 
 
 
@@ -99,15 +108,21 @@ public class fishingBuddy extends Application {
         GridPane pane = new GridPane();
 
         //placing items into pane
-        pane.addRow(1,labelSpecies, species);
-        pane.addRow(2,labelLength, length);
-        pane.addRow(3,labelWeight,weight);
-        pane.addRow(4,labelLocation,location);
-        pane.addRow(5,labelTime,time);
+        pane.add(labelSpecies,0,1);
+        pane.add(species,1,1);
+        pane.add(labelLength,0,2);
+        pane.add(length,1,2);
+        pane.add(labelWeight,0,3);
+        pane.add(weight,1,3);
+        pane.add(labelLocation,0,4);
+        pane.add(location,1,4);
+        pane.add(labelTime,0,5);
+        pane.add(time,1,5);
         pane.add(buttonSubmit,0,6);
         pane.add(buttonClear,1,6);
         pane.add(imageView, 2,0);
         pane.add(buttonLoadImage, 2,1);
+        pane.add(imageIcon,0,0);
 
 
         //pane layout
