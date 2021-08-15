@@ -8,6 +8,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -31,6 +32,7 @@ public class fishingBuddy extends Application {
     private static ImageView imageView;
     private static ImageView imageIcon;
     private static File selectedFile;
+    private static ButtonBar buttonBar;
 
 
 
@@ -47,6 +49,9 @@ public class fishingBuddy extends Application {
         buttonSubmit = new Button("Submit");
         buttonClear = new Button("Clear");
         buttonLoadImage = new Button("Load Image");
+        buttonBar = new ButtonBar();
+        buttonBar.getButtons().addAll(buttonSubmit,buttonClear);
+
 
         //imageviewer
         Image noImage = new Image("Image/noImg.jpg");
@@ -120,9 +125,11 @@ public class fishingBuddy extends Application {
         pane.add(time,1,5);
         pane.add(buttonSubmit,0,6);
         pane.add(buttonClear,1,6);
+        pane.add(buttonBar,0,6,2,1);
         pane.add(imageView, 2,0);
         pane.add(buttonLoadImage, 2,1);
-        pane.add(imageIcon,0,0);
+        pane.add(imageIcon,0,0,2,1);
+
 
 
         //pane layout
