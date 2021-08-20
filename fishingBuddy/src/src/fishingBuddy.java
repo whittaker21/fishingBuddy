@@ -62,7 +62,7 @@ public class fishingBuddy extends Application {
         imageView.setSmooth(true);
         imageView.setCache(true);
 
-        Image logo = new Image("Image/FishingBuddy3.0.png");
+        Image logo = new Image("Image/FishingBuddy5.0.png");
         imageIcon = new ImageView(logo);
         imageIcon.setFitHeight(400);
         imageIcon.setFitWidth(225);
@@ -144,6 +144,7 @@ public class fishingBuddy extends Application {
         //displaying the window
         //placing the scene in the stage
         Scene scene1 = new Scene( pane,600, 430);
+        scene1.getStylesheets().add("stylesheet.css");
         primaryStage.setScene(scene1);
         primaryStage.setTitle("Fishing Buddy");
         primaryStage.show();
